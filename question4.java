@@ -1,37 +1,32 @@
-// Problem 4: Sorted Array to BST
+// Problem 4: Subtree of Another Tree
 
-// Question: Given an integer array nums sorted in ascending order, convert it to a height-balanced BST.
-// A height-balanced BST is one where the depth of the two subtrees of every node never differs by more than one.
+// Question: Given the roots of two binary trees root and subRoot, return true if there is a subtree of root with the same structure and node values of subRoot and false otherwise
+// A subtree of a binary tree tree is a tree that consists of a node in tree and all of this node's descendants. The tree tree could also be considered as a subtree of itself.
 
 // Example:
+// Input: root = [1,2,3,4,5], subRoot = [2,4,5]
+// Output: true
 
-// Input: nums = [-10,-3,0,5,9]
-// Output: [0,-3,9,-10,null,5]
+// Input: root = [1,2,3,4,5,null,null,6], subRoot = [2,4,5]
+// Output: false
+// (Node 4 has child 6 in root but not in subRoot — subtree must match exactly down to leaves)
 
-// Pick middle element as root to ensure balance.
+// Input: root = [1,2,3], subRoot = [1,2,3]
+// Output: true
+// (Entire tree equals subRoot — a tree is a subtree of itself)
 
-// Input: nums = [1,3]
-// Output: [3,1] or [1,null,3]
-// (Two elements — either can be root, depends on mid calculation)
+// Input: root = [1], subRoot = [1]
+// Output: true
+// (Single node matches single node)
 
-// Input: nums = [0]
-// Output: [0]
-// (Single element)
+// Input: root = [1,2], subRoot = [1]
+// Output: false
+// (root has a left child but subRoot doesn't — not an exact subtree match since subtree must include all descendants)
 
-// Input: nums = [1,2,3,4,5,6,7]
-// Output: [4,2,6,1,3,5,7]
-// (Perfect binary tree, height = 2)
+// Input: root = [3,4,5,1,2], subRoot = [4,1]
+// Output: false
+// (Node 4 in root has children 1 AND 2, but subRoot [4,1] only has left child 1 — must match completely)
 
-// Input: nums = [-5,-3,-1,0,1,3,5]
-// Output: [0,-3,3,-5,-1,1,5]
-// (Symmetric around 0)
-
-// Input: nums = [1,2,3]
-// Output: [2,1,3]
-// (Smallest case that produces a full tree)
-
-// Input: nums = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
-// Output: balanced BST with height 3
-// (Power of 2 minus 1 — always produces a perfect tree)
-
-// Hint: Think divide and conquer — pick the middle, recurse on halves.
+// Input: root = [3,4,5,1,2,null,null,null,null,0], subRoot = [4,1,2]
+// Output: false
+// (Node 2 in root has a left child 0, but in subRoot node 2 is a leaf — extra descendant breaks the match)
